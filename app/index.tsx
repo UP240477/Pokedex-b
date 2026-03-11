@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScrollView } from "react-native";
+import { Button, ScrollView } from "react-native";
 import PokemonCards from "../components/PokemonCard";
 
 export default function Index() {
@@ -35,8 +36,11 @@ export default function Index() {
 
   return (
     <ScrollView>
+      <Button title="New Screen" onPress={() => router.push("/new-screen")} />
+      <Button title="Pokemon Screen" onPress={() => router.push("/pokemon")} />
+      <Button title="Dynamic" onPress={() => router.push("/pokemon/[name]")} />
+
       {results.map((pokemon: { name: any; url: any }) => (
-        // La propiedad 'key' es obligatoria en React al usar map para identificar cada elemento
         <PokemonCards
           key={pokemon.name}
           name={pokemon.name}
